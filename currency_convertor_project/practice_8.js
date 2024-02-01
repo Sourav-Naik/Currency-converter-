@@ -3,18 +3,15 @@ const dropdowns = document.querySelectorAll(".dropdown select");
 const imgs = document.querySelectorAll("img");
 const button = document.querySelector("button");
 const input = document.querySelector("input");
-const msg =document.querySelector(".msg");
+const msg = document.querySelector(".msg");
 
 
 (async function () {
-    let a ="usd";
-    let b = "inr";
-    const url=baseUrl+"/"+a+"/"+b+".json";
+    let url=baseUrl+"/usd/inr.json";
     let response = await fetch(url);
     let data = await response.json();
-    let c =input.value * data[b];
-    document.querySelector(".date").innerText = `${data["date"]}`;
-    msg.innerText=`${input.value}${a} = ${c}${b}`;
+    document.querySelector(".date").innerText = `${data.date}`;
+    msg.innerText=`1 USD = ${data.inr}INR`;
 })();
 
 for( let select of dropdowns){
